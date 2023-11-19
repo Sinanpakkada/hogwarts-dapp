@@ -155,7 +155,27 @@ console.log('Random House Contract Instance:', randomHouseInstance);
 
     setLoading(true);
     const houseIndex = await hogwartsContract.methods.getHouseIndex(account).call();
-    
+    switch (houseIndex) {
+      case 0:
+        playGryffindorSound();
+        console.log("gryffindor sound played");
+        break;
+      case 1:
+        playHufflepuffSound();
+        console.log("Huffflepuff sound played");
+        break;
+      case 2:
+        playRavenclawSound();
+        console.log("Ravenclaw sound played");
+        break;
+      case 3:
+        playSlytherinSound();
+        console.log("Slytherin sound played");
+        break;
+      default:
+        console.log("no sound sound played:",houseIndex);
+        break;
+    }
     
     const addressToHouse = [
     "You belong in Gryffindor....", 
@@ -184,27 +204,6 @@ console.log('Random House Contract Instance:', randomHouseInstance);
         if (minted === true){
             setMinted(true);
             await getHouseData();
-            switch (houseIndex) {
-      case 0:
-        playGryffindorSound();
-        console.log("gryffindor sound played");
-        break;
-      case 1:
-        playHufflepuffSound();
-        console.log("Huffflepuff sound played");
-        break;
-      case 2:
-        playRavenclawSound();
-        console.log("Ravenclaw sound played");
-        break;
-      case 3:
-        playSlytherinSound();
-        console.log("Slytherin sound played");
-        break;
-      default:
-        console.log("no sound sound played:",houseIndex);
-        break;
-    }
             setLoading(false);
         } else {
             setMinted(false);
